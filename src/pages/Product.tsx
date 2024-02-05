@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import ItemData from "../components/ItemData";
 import PageTitle from "../components/PageTitle";
@@ -13,7 +14,9 @@ export default function ProductPage() {
       <ItemData title="Ventas" text="54 ventas" />
 
       <div className="flex flex-col gap-[10px]">
-        <PrimaryButton>Editar</PrimaryButton>
+        <PrimaryButton>
+          <Link to="/edit-product/12">Editar</Link>
+        </PrimaryButton>
         <SecondaryButton>Borrar</SecondaryButton>
       </div>
     </section>
