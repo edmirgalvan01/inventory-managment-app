@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 
 interface Props {
   type: "product" | "sale";
+  id: number;
   title: string;
   subtitle: string;
   amount: number;
 }
 
-export default function ItemCard({ type, title, subtitle, amount }: Props) {
-  const hrefValue = type === "product" ? "/product/123" : "/sale/098";
+export default function ItemCard({ type, id, title, subtitle, amount }: Props) {
+  const hrefValue = type === "product" ? `/product/${id}` : `/sale/${id}`;
 
   return (
     <Link to={hrefValue}>

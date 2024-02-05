@@ -15,6 +15,7 @@ export default function ListOfItems({ type, list }: Props) {
           const { id, name, quantity, price, unity } = item as ProductType;
           return (
             <ItemCard
+              id={id}
               key={id}
               type="product"
               title={name}
@@ -28,6 +29,7 @@ export default function ListOfItems({ type, list }: Props) {
           const { id, total, product_id, date } = item as SaleType;
           return (
             <ItemCard
+              id={id}
               key={id}
               type="sale"
               title={`${product_id}`}
