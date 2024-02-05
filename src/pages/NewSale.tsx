@@ -7,18 +7,25 @@ export default function NewSalePage() {
     <section className="containerPage">
       <PageTitle title="Nueva venta" />
       <form className="flex flex-col gap-[20px]">
-        <FieldSelect label="Producto" disabled={false} handleClick={() => {}} />
+        <FieldSelect
+          label="Producto"
+          disabled={false}
+          handleChange={() => {}}
+          required
+        />
         <FieldInput
           label="Cantidad"
           placeholder="14"
           disabled={false}
           type="text"
-          handleClick={() => {}}
+          handleChange={() => {}}
+          required
         />
         <FieldInput
           label="Fecha"
           disabled={false}
-          handleClick={() => {}}
+          handleChange={() => {}}
+          required
           placeholder="12/02/2024"
           type="date"
         />

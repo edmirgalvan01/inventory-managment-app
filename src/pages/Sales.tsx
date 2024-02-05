@@ -10,7 +10,7 @@ export default function SalesPage() {
       <PrimaryButton>
         <Link to="/new-sale">Nueva venta</Link>
       </PrimaryButton>
-      <ListOfItemsWithTitle title="Ventas (16)" type="sale" />
+      <ListOfItemsWithTitle title="Ventas (16)" type="sale" list={[]} />
     </section>
   );
 }

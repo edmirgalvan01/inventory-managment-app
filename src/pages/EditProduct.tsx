@@ -12,13 +12,20 @@ export default function EditProductPage() {
           placeholder="Color azul"
           disabled={false}
           type="text"
-          handleClick={() => {}}
+          handleChange={() => {}}
+          required
         />
-        <FieldSelect label="Cantidad" disabled={false} handleClick={() => {}} />
+        <FieldSelect
+          label="Cantidad"
+          disabled={false}
+          handleChange={() => {}}
+          required
+        />
         <FieldInput
           label="Cantidad"
           disabled={false}
-          handleClick={() => {}}
+          handleChange={() => {}}
+          required
           placeholder="12"
           type="number"
         />
@@ -27,7 +34,8 @@ export default function EditProductPage() {
           placeholder="43.23"
           disabled={false}
           type="number"
-          handleClick={() => {}}
+          handleChange={() => {}}
+          required
         />
         <PrimaryButton>Guardar producto</PrimaryButton>
       </form>
