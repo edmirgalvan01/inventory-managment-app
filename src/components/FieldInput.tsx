@@ -52,6 +52,9 @@ export function FieldSelect({
         onChange={handleChange}
         className="bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       >
+        <option value="" defaultChecked>
+          Unidades
+        </option>
         <option value="kgs">Kgs</option>
         <option value="grs">Grs</option>
         <option value="lts">Lts</option>
