@@ -5,3 +5,10 @@ export type ProductType = {
   price: float;
   unity: string;
 };
+
+export type ProductWithoutIdType = {
+  name: string;
+  quantity: float;
+  price: float;
+  unity: string;
+};
