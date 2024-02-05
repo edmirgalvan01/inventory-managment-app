@@ -14,6 +14,10 @@ export default {
         "light-blue": "#AAC7D8",
         "soft-blue": "#DFEBF6",
       },
+      fontFamily: {
+        inter: ["Inter", "Sans Serif"],
+        nunito: ["nunito", "Sans Serif"],
+      },
     },
   },
   plugins: [],
