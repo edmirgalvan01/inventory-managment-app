@@ -4,7 +4,7 @@ import PageTitle from "../components/PageTitle";
 
 export default function ProductPage() {
   return (
-    <section className="productPage flex flex-col gap-[20px]">
+    <section className="containerPage">
       <PageTitle title="Nombre del producto" />
       <ItemData title="Nombre" text="Color Azul" />
       <ItemData title="Cantidad" text="22 unidades" />

@@ -4,7 +4,7 @@ import PageTitle from "../components/PageTitle";
 
 export default function EditSalePage() {
   return (
-    <section className="flex flex-col gap-[20px]">
+    <section className="containerPage">
       <PageTitle title="Editar venta" />
       <form className="flex flex-col gap-[20px]">
         <FieldSelect label="Producto" disabled={false} handleClick={() => {}} />
