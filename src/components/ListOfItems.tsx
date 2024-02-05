@@ -8,6 +8,13 @@ type Props = {
 };
 
 export default function ListOfItems({ type, list }: Props) {
+  if (list.length === 0)
+    return (
+      <h1 className="font-nunito text-medium-blue font-bold text-xl">
+        No hay items por mostrar
+      </h1>
+    );
+
   return (
     <ul className="listOfItems flex flex-col gap-[10px]">
       {list.map((item) => {
