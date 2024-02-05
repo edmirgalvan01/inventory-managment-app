@@ -24,7 +24,7 @@ export function FieldInput({
         disabled={disabled}
         required={required}
         onChange={handleChange}
-        className="bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
+        className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       />
     </label>
   );
@@ -50,7 +50,7 @@ export function FieldSelect({
         disabled={disabled}
         required={required}
         onChange={handleChange}
-        className="bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
+        className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       >
         <option value="" defaultChecked>
           Unidades

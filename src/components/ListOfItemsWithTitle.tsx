@@ -10,8 +10,8 @@ interface Props {
 
 export default function ListOfItemsWithTitle({ title, type, list }: Props) {
   return (
-    <section className="listOfItemsWithTitle flex flex-col gap-[10px]">
-      <h2 className="text-medium-blue font-semibold">{title}</h2>
+    <section className="flex flex-col gap-[10px]">
+      <h2 className="font-nunito text-medium-blue font-bold">{title}</h2>
       <ListOfItems type={type} list={list} />
     </section>
   );
