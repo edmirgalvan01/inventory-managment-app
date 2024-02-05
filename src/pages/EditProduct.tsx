@@ -1,3 +1,4 @@
+import { PrimaryButton } from "../components/Buttons";
 import { FieldInput, FieldSelect } from "../components/FieldInput";
 import PageTitle from "../components/PageTitle";
 
@@ -28,7 +29,7 @@ export default function EditProductPage() {
           type="number"
           handleClick={() => {}}
         />
-        <button>Guardar producto</button>
+        <PrimaryButton>Guardar producto</PrimaryButton>
       </form>
     </section>
   );

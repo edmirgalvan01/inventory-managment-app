@@ -1,3 +1,4 @@
+import { PrimaryButton } from "../components/Buttons";
 import { FieldInput, FieldSelect } from "../components/FieldInput";
 import PageTitle from "../components/PageTitle";
 
@@ -21,7 +22,7 @@ export default function EditSalePage() {
           placeholder="12/02/2024"
           type="date"
         />
-        <button>Guardar venta</button>
+        <PrimaryButton>Guardar venta</PrimaryButton>
       </form>
     </section>
   );

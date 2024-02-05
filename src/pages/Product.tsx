@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import ItemData from "../components/ItemData";
 import PageTitle from "../components/PageTitle";
 
@@ -12,12 +13,12 @@ export default function ProductPage() {
       <ItemData title="Ventas" text="54 ventas" />
 
       <div className="flex flex-col gap-[10px]">
-        <button>
+        <PrimaryButton>
           <a href="/edit-product">Editar</a>
-        </button>
-        <button>
+        </PrimaryButton>
+        <SecondaryButton>
           <a href="/">Borrar</a>
-        </button>
+        </SecondaryButton>
       </div>
     </section>
   );

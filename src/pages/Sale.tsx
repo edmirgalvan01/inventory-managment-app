@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import ItemData from "../components/ItemData";
 import PageTitle from "../components/PageTitle";
 
@@ -10,12 +11,12 @@ export default function SalePage() {
       <ItemData title="Total" text="Total vendido" />
 
       <div className="flex flex-col gap-[10px]">
-        <button>
+        <PrimaryButton>
           <a href="/edit-sale/098">Editar</a>
-        </button>
-        <button>
+        </PrimaryButton>
+        <SecondaryButton>
           <a href="/">Borrar</a>
-        </button>
+        </SecondaryButton>
       </div>
     </section>
   );
