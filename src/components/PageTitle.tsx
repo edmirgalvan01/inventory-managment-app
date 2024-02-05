@@ -13,7 +13,7 @@ export default function PageTitle({ title }: Props) {
       <a onClick={() => navigate(-1)}>
         <IconArrowLeft className="text-blue" />
       </a>
-      <h1 className="text-blue font-medium">{title}</h1>
+      <h1 className="text-blue font-bold font-nunito">{title}</h1>
       <Link to="/">
         <IconHome className="text-blue" />
       </Link>
