@@ -1,13 +1,14 @@
+import { Link } from "react-router-dom";
 import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 
 export default function WelcomePage() {
   return (
     <section className="containerPage justify-center items-center">
       <PrimaryButton>
-        <a href="/inventory">Inventario</a>
+        <Link to="/inventory">Inventario</Link>
       </PrimaryButton>
       <SecondaryButton>
-        <a href="/sales">Ventas</a>
+        <Link to="/sales">Ventas</Link>
       </SecondaryButton>
     </section>
   );

@@ -11,12 +11,8 @@ export default function SalePage() {
       <ItemData title="Total" text="Total vendido" />
 
       <div className="flex flex-col gap-[10px]">
-        <PrimaryButton>
-          <a href="/edit-sale/098">Editar</a>
-        </PrimaryButton>
-        <SecondaryButton>
-          <a href="/">Borrar</a>
-        </SecondaryButton>
+        <PrimaryButton>Editar</PrimaryButton>
+        <SecondaryButton>Borrar</SecondaryButton>
       </div>
     </section>
   );

@@ -13,12 +13,8 @@ export default function ProductPage() {
       <ItemData title="Ventas" text="54 ventas" />
 
       <div className="flex flex-col gap-[10px]">
-        <PrimaryButton>
-          <a href="/edit-product">Editar</a>
-        </PrimaryButton>
-        <SecondaryButton>
-          <a href="/">Borrar</a>
-        </SecondaryButton>
+        <PrimaryButton>Editar</PrimaryButton>
+        <SecondaryButton>Borrar</SecondaryButton>
       </div>
     </section>
   );
