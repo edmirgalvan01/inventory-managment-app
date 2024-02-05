@@ -3,7 +3,7 @@ interface Props {
   placeholder: string;
   disabled: boolean;
   type: "text" | "number" | "email" | "password" | "date";
-  handleClick: React.MouseEventHandler<HTMLInputElement>;
+  handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export function FieldInput({
@@ -11,7 +11,7 @@ export function FieldInput({
   placeholder,
   disabled = false,
   type,
-  handleClick,
+  handleChange,
 }: Props) {
   return (
     <label className="min-w-[300px] flex flex-col gap-1 text-medium-blue text-sm font-semibold">
@@ -20,7 +20,7 @@ export function FieldInput({
         type={type}
         placeholder={placeholder}
         disabled={disabled}
-        onClick={handleClick}
+        onChange={handleChange}
         className="bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       />
     </label>
@@ -30,20 +30,20 @@ export function FieldInput({
 interface SelectProps {
   label: string;
   disabled: boolean;
-  handleClick: React.MouseEventHandler<HTMLSelectElement>;
+  handleChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 export function FieldSelect({
   label,
   disabled = false,
-  handleClick,
+  handleChange,
 }: SelectProps) {
   return (
     <label className="min-w-[300px] flex flex-col gap-1 text-medium-blue text-sm font-semibold">
       {label}
       <select
         disabled={disabled}
-        onClick={handleClick}
+        onChange={handleChange}
         className="bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       >
         <option value="kgs">Kgs</option>
