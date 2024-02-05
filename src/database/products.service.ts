@@ -10,3 +10,15 @@ export async function getProducts(): Promise<{
 
   return { products, error };
 }
+
+export async function getProductById(productId: number): Promise<{
+  products: ProductType[] | null;
+  error: PostgrestError | null;
+}> {
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", productId);
+
+  return { products, error };
+}
