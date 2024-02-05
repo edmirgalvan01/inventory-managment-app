@@ -4,8 +4,8 @@ import { ProductType } from "../types/products";
 import { PostgrestError } from "@supabase/supabase-js";
 
 export function useGetProducts() {
-  const [products, setProducts] = useState<ProductType[] | null>();
-  const [error, setError] = useState<PostgrestError | null>();
+  const [products, setProducts] = useState<ProductType[] | null>([]);
+  const [error, setError] = useState<PostgrestError | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {

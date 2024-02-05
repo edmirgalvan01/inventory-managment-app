@@ -3,4 +3,5 @@ export type SaleType = {
   quantity: float;
   total: float;
   product_id: number;
+  date: string;
 };
