@@ -3,6 +3,7 @@ interface Props {
   placeholder: string;
   disabled: boolean;
   type: "text" | "number" | "email" | "password" | "date";
+  required: boolean;
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -11,6 +12,7 @@ export function FieldInput({
   placeholder,
   disabled = false,
   type,
+  required = false,
   handleChange,
 }: Props) {
   return (
@@ -20,6 +22,7 @@ export function FieldInput({
         type={type}
         placeholder={placeholder}
         disabled={disabled}
+        required={required}
         onChange={handleChange}
         className="bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       />
@@ -30,12 +33,14 @@ export function FieldInput({
 interface SelectProps {
   label: string;
   disabled: boolean;
+  required: boolean;
   handleChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 export function FieldSelect({
   label,
   disabled = false,
+  required = false,
   handleChange,
 }: SelectProps) {
   return (
@@ -43,6 +48,7 @@ export function FieldSelect({
       {label}
       <select
         disabled={disabled}
+        required={required}
         onChange={handleChange}
         className="bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       >
