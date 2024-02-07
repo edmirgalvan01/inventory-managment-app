@@ -34,3 +34,16 @@ export async function insertProduct(product: ProductWithoutIdType): Promise<{
 
   return { data, error };
 }
+
+export async function updateProduct(
+  productId: number,
+  newProduct: ProductWithoutIdType
+) {
+  const { data, error } = await supabase
+    .from("products")
+    .update(newProduct)
+    .eq("id", productId)
+    .select();
+
+  return { data, error };
+}
