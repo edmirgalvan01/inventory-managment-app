@@ -11,6 +11,18 @@ export async function getSales(): Promise<{
   return { sales, error };
 }
 
+export async function getSaleById(saleId: number): Promise<{
+  sales: SaleType[] | null;
+  error: PostgrestError | null;
+}> {
+  const { data: sales, error } = await supabase
+    .from("sales")
+    .select("*")
+    .eq("id", saleId);
+
+  return { sales, error };
+}
+
 export async function insertSale(sale: SaleWithoutIdType): Promise<{
   data: SaleType[] | null;
   error: PostgrestError | null;
