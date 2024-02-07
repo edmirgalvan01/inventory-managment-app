@@ -27,7 +27,7 @@ export default function ProductPage() {
 
           <div className="flex flex-col gap-[10px]">
             <PrimaryButton>
-              <Link to="/edit-product/12">Editar</Link>
+              <Link to={`/edit-product/${product.id}`}>Editar</Link>
             </PrimaryButton>
             <SecondaryButton>Borrar</SecondaryButton>
           </div>
