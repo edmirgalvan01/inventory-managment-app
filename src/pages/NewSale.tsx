@@ -25,6 +25,8 @@ export default function NewSalePage() {
         if (!response.error) {
           toast.success("Producto agregado correctamente.");
           setTimeout(() => navigate("/sales"), 2000);
+        } else {
+          // TODO: Error message ❌
         }
       })
       .finally(() => {});

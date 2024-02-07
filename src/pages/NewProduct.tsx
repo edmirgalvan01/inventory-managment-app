@@ -20,6 +20,8 @@ export default function NewProductPage() {
       if (!response.error) {
         toast.success("Producto agregado correctamente.");
         setTimeout(() => navigate("/inventory"), 2000);
+      } else {
+        // TODO: Error message ❌
       }
     });
   };
