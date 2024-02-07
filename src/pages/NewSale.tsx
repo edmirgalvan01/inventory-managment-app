@@ -18,7 +18,7 @@ export default function NewSalePage() {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     saveSale()
-      .then(({ data, error }) => {
+      .then(() => {
         // Si no hay error, mostrar una notificacion de ✅
         // y ridirigir a Sales
       })

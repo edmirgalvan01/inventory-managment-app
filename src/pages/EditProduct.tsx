@@ -12,7 +12,7 @@ export default function EditProductPage() {
           placeholder="Color azul"
           disabled={false}
           type="text"
-          handleChange={() => {}}
+          onChange={() => {}}
           required
         />
         <FieldSelect
@@ -24,7 +24,7 @@ export default function EditProductPage() {
         <FieldInput
           label="Cantidad"
           disabled={false}
-          handleChange={() => {}}
+          onChange={() => {}}
           required
           placeholder="12"
           type="number"
@@ -34,7 +34,7 @@ export default function EditProductPage() {
           placeholder="43.23"
           disabled={false}
           type="number"
-          handleChange={() => {}}
+          onChange={() => {}}
           required
         />
         <PrimaryButton>Guardar producto</PrimaryButton>

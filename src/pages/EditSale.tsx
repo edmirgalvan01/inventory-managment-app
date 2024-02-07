@@ -18,13 +18,13 @@ export default function EditSalePage() {
           placeholder="14"
           disabled={false}
           type="text"
-          handleChange={() => {}}
+          onChange={() => {}}
           required
         />
         <FieldInput
           label="Fecha"
           disabled={false}
-          handleChange={() => {}}
+          onChange={() => {}}
           required
           placeholder="12/02/2024"
           type="date"

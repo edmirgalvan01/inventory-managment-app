@@ -28,7 +28,7 @@ export default function NewProductPage() {
           placeholder="Color azul"
           disabled={false}
           type="text"
-          handleChange={(e) => handleChange("name", e.target.value)}
+          onChange={(e) => handleChange("name", e.target.value)}
           required
         />
         <FieldSelect
@@ -40,7 +40,7 @@ export default function NewProductPage() {
         <FieldInput
           label="Cantidad"
           disabled={false}
-          handleChange={(e) => handleChange("quantity", e.target.value)}
+          onChange={(e) => handleChange("quantity", e.target.value)}
           required
           placeholder="12"
           type="number"
@@ -50,7 +50,7 @@ export default function NewProductPage() {
           placeholder="43.23"
           disabled={false}
           type="number"
-          handleChange={(e) => handleChange("price", e.target.value)}
+          onChange={(e) => handleChange("price", e.target.value)}
           required
         />
         <PrimaryButton>Guardar producto</PrimaryButton>
