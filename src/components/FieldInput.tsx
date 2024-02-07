@@ -1,61 +1,37 @@
-interface Props {
+import { InputHTMLAttributes, SelectHTMLAttributes } from "react";
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
   label: string;
-  placeholder: string;
-  disabled: boolean;
-  type: "text" | "number" | "email" | "password" | "date";
-  required: boolean;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export function FieldInput({
-  label,
-  placeholder,
-  disabled = false,
-  type,
-  required = false,
-  onChange,
-}: Props) {
+export function FieldInput({ label, ...rest }: InputProps) {
   return (
     <label className="min-w-[300px] flex flex-col gap-1 text-medium-blue text-sm font-semibold">
       {label}
       <input
-        type={type}
-        placeholder={placeholder}
-        disabled={disabled}
-        required={required}
-        onChange={onChange}
+        {...rest}
         className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       />
     </label>
   );
 }
 
-interface SelectProps {
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options?: Array<{
     value: string;
     label: string;
   }>;
   label: string;
-  disabled: boolean;
-  required: boolean;
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
-export function FieldSelect({
-  options = [],
-  label,
-  disabled = false,
-  required = false,
-  onChange,
-}: SelectProps) {
+export function FieldSelect({ options = [], label, ...rest }: SelectProps) {
   return (
     <label className="min-w-[300px] flex flex-col gap-1 text-medium-blue text-sm font-semibold">
       {label}
       <select
-        disabled={disabled}
-        required={required}
-        onChange={onChange}
         className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
+        {...rest}
       >
         <option defaultChecked>Selecciona</option>
         {options?.map((option) => (
