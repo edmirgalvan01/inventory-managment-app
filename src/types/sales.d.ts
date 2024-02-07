@@ -8,7 +8,7 @@ export type SaleType = {
   date: string;
 };
 
-export type SaleTypeWithProduct = {
+export type SaleWithProductType = {
   id: number;
   quantity: float;
   total: float;
