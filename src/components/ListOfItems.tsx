@@ -1,6 +1,7 @@
 import { ProductType } from "../types/products";
 import { SaleType } from "../types/sales";
 import ItemCard from "./ItemCard";
+import SaleCard from "./SaleCard";
 
 type Props = {
   type: "product" | "sale";
@@ -35,13 +36,11 @@ export default function ListOfItems({ type, list }: Props) {
         if (type === "sale") {
           const { id, total, product_id, date } = item as SaleType;
           return (
-            <ItemCard
-              id={id}
+            <SaleCard
               key={id}
-              type="sale"
-              title={`${product_id}`}
-              subtitle={date}
-              amount={total}
+              product_id={product_id}
+              date={date}
+              total={total}
             />
           );
         }
