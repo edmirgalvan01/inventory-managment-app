@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGetProductById } from "../hooks/useGetProductById";
+import { SkeletonCard } from "./SkeletonCard";
 
 interface Props {
   product_id: number;
@@ -14,7 +15,7 @@ export default function SaleCard({ product_id, date, total }: Props) {
   return (
     <>
       {isLoading ? (
-        <p>Cargando...</p>
+        <SkeletonCard />
       ) : (
         <Link to={hrefValue}>
           <li className="font-inter bg-soft-white min-w-[300px] px-[20px] py-[15px] rounded-[24px] flex items-center justify-between">
