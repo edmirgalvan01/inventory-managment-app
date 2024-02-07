@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { PrimaryButton } from "../components/Buttons";
-import { FieldInput, FieldSelect } from "../components/FieldInput";
+import { Toaster, toast } from "sonner";
 import PageTitle from "../components/PageTitle";
+import { PrimaryButton } from "../components/Buttons";
 import { useInsertProduct } from "../hooks/useInsertProduct";
+import { FieldInput, FieldSelect } from "../components/FieldInput";
 
 export default function NewProductPage() {
   const navigate = useNavigate();
@@ -15,7 +16,10 @@ export default function NewProductPage() {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     saveProduct(product).then((response) => {
-      if (!response.error) navigate("/inventory");
+      if (!response.error) {
+        toast.success("Producto agregado correctamente.");
+        setTimeout(() => navigate("/inventory"), 2000);
+      }
     });
   };
 
@@ -55,6 +59,7 @@ export default function NewProductPage() {
         />
         <PrimaryButton>Guardar producto</PrimaryButton>
       </form>
+      <Toaster richColors />
     </section>
   );
 }
