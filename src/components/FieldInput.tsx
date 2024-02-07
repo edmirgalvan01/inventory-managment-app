@@ -31,7 +31,7 @@ export function FieldInput({
 }
 
 interface SelectProps {
-  options: Array<{
+  options?: Array<{
     value: string;
     label: string;
   }>;
@@ -42,7 +42,7 @@ interface SelectProps {
 }
 
 export function FieldSelect({
-  options,
+  options = [],
   label,
   disabled = false,
   required = false,
@@ -58,7 +58,7 @@ export function FieldSelect({
         className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       >
         <option defaultChecked>Selecciona</option>
-        {options.map((option) => (
+        {options?.map((option) => (
           <option value={option.value}>{option.label}</option>
         ))}
       </select>

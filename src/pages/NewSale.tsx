@@ -7,7 +7,7 @@ export default function NewSalePage() {
   const { products, isLoading } = useGetProducts();
   const mappedOptions = products?.map((product) => {
     return {
-      value: product.id,
+      value: product.id.toString(),
       label: product.name,
     };
   });
