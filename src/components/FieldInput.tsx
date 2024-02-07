@@ -31,6 +31,10 @@ export function FieldInput({
 }
 
 interface SelectProps {
+  options: Array<{
+    value: string;
+    label: string;
+  }>;
   label: string;
   disabled: boolean;
   required: boolean;
@@ -38,6 +42,7 @@ interface SelectProps {
 }
 
 export function FieldSelect({
+  options,
   label,
   disabled = false,
   required = false,
@@ -52,13 +57,10 @@ export function FieldSelect({
         onChange={handleChange}
         className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       >
-        <option value="" defaultChecked>
-          Unidades
-        </option>
-        <option value="kgs">Kgs</option>
-        <option value="grs">Grs</option>
-        <option value="lts">Lts</option>
-        <option value="pzs">Pzs</option>
+        <option defaultChecked>Selecciona</option>
+        {options.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
       </select>
     </label>
   );
