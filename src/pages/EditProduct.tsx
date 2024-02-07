@@ -18,7 +18,7 @@ export default function EditProductPage() {
         <FieldSelect
           label="Cantidad"
           disabled={false}
-          handleChange={() => {}}
+          onChange={() => {}}
           required
         />
         <FieldInput

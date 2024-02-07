@@ -34,7 +34,7 @@ export default function NewProductPage() {
         <FieldSelect
           label="Unidad"
           disabled={false}
-          handleChange={(e) => handleChange("unity", e.target.value)}
+          onChange={(e) => handleChange("unity", e.target.value)}
           required
         />
         <FieldInput

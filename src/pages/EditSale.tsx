@@ -10,7 +10,7 @@ export default function EditSalePage() {
         <FieldSelect
           label="Producto"
           disabled={false}
-          handleChange={() => {}}
+          onChange={() => {}}
           required
         />
         <FieldInput
