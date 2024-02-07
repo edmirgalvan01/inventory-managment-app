@@ -4,7 +4,7 @@ interface Props {
   disabled: boolean;
   type: "text" | "number" | "email" | "password" | "date";
   required: boolean;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export function FieldInput({
@@ -13,7 +13,7 @@ export function FieldInput({
   disabled = false,
   type,
   required = false,
-  handleChange,
+  onChange,
 }: Props) {
   return (
     <label className="min-w-[300px] flex flex-col gap-1 text-medium-blue text-sm font-semibold">
@@ -23,7 +23,7 @@ export function FieldInput({
         placeholder={placeholder}
         disabled={disabled}
         required={required}
-        onChange={handleChange}
+        onChange={onChange}
         className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       />
     </label>
@@ -38,7 +38,7 @@ interface SelectProps {
   label: string;
   disabled: boolean;
   required: boolean;
-  handleChange: React.ChangeEventHandler<HTMLSelectElement>;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 export function FieldSelect({
@@ -46,7 +46,7 @@ export function FieldSelect({
   label,
   disabled = false,
   required = false,
-  handleChange,
+  onChange,
 }: SelectProps) {
   return (
     <label className="min-w-[300px] flex flex-col gap-1 text-medium-blue text-sm font-semibold">
@@ -54,7 +54,7 @@ export function FieldSelect({
       <select
         disabled={disabled}
         required={required}
-        onChange={handleChange}
+        onChange={onChange}
         className="font-nunito bg-transparent border-light-blue border-2 rounded-[8px] p-3 outline-none placeholder:italic "
       >
         <option defaultChecked>Selecciona</option>
