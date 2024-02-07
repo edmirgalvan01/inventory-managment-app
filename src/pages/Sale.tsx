@@ -16,6 +16,7 @@ export default function SalePage() {
       {!isLoading ? (
         <>
           <ItemData title="Producto" text={sale!.products.name} />
+          <ItemData title="Fecha" text={sale!.date} />
           <ItemData
             title="Cantidad"
             text={`${sale?.quantity}${sale?.products.unity}`}
