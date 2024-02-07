@@ -3,8 +3,11 @@ import { FieldInput, FieldSelect } from "../components/FieldInput";
 import { useGetProducts } from "../hooks/useGetProducts";
 import PageTitle from "../components/PageTitle";
 import { useInsertSale } from "../hooks/useInsertSale";
+import { Toaster, toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export default function NewSalePage() {
+  const navigate = useNavigate();
   const { products, isLoading } = useGetProducts();
   const { updateSale: handleChange, saveSale } = useInsertSale();
 
@@ -18,9 +21,11 @@ export default function NewSalePage() {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     saveSale()
-      .then(() => {
-        // Si no hay error, mostrar una notificacion de ✅
-        // y ridirigir a Sales
+      .then((response) => {
+        if (!response.error) {
+          toast.success("Producto agregado correctamente.");
+          setTimeout(() => navigate("/sales"), 2000);
+        }
       })
       .finally(() => {});
   };
@@ -68,6 +73,7 @@ export default function NewSalePage() {
           </form>
         )}
       </>
+      <Toaster richColors />
     </section>
   );
 }
