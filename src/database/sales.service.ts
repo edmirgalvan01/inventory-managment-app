@@ -1,5 +1,9 @@
 import { PostgrestError } from "@supabase/supabase-js";
-import { SaleType, SaleWithoutIdType } from "../types/sales";
+import {
+  SaleType,
+  SaleTypeWithProduct,
+  SaleWithoutIdType,
+} from "../types/sales";
 import { supabase } from "./supabaseClient";
 
 export async function getSales(): Promise<{
@@ -12,12 +16,12 @@ export async function getSales(): Promise<{
 }
 
 export async function getSaleById(saleId: number): Promise<{
-  sales: SaleType[] | null;
+  sales: SaleTypeWithProduct[] | null;
   error: PostgrestError | null;
 }> {
   const { data: sales, error } = await supabase
     .from("sales")
-    .select("*")
+    .select("*, products(*)")
     .eq("id", saleId);
 
   return { sales, error };
