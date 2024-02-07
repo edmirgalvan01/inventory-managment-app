@@ -4,6 +4,7 @@ import PageTitle from "../components/PageTitle";
 import { PrimaryButton } from "../components/Buttons";
 import { useInsertProduct } from "../hooks/useInsertProduct";
 import { FieldInput, FieldSelect } from "../components/FieldInput";
+import { LIST_OF_UNITIES } from "../consts";
 
 export default function NewProductPage() {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ export default function NewProductPage() {
           disabled={false}
           onChange={(e) => handleChange("unity", e.target.value)}
           required
+          options={LIST_OF_UNITIES}
         />
         <FieldInput
           label="Cantidad"
