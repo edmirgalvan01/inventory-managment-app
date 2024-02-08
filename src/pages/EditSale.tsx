@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import { PrimaryButton } from "../components/Buttons";
 import { FieldInput, FieldSelect } from "../components/FieldInput";
 import PageTitle from "../components/PageTitle";
@@ -31,6 +32,7 @@ export default function EditSalePage() {
         />
         <PrimaryButton>Guardar venta</PrimaryButton>
       </form>
+      <Toaster richColors />
     </section>
   );
 }
