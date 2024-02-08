@@ -37,6 +37,7 @@ export default function ListOfItems({ type, list }: Props) {
           return (
             <SaleCard
               key={id}
+              id={id}
               product_id={product_id}
               date={date}
               total={total}
