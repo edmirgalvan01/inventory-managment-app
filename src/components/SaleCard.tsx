@@ -4,13 +4,14 @@ import { SkeletonCard } from "./SkeletonCard";
 
 interface Props {
   product_id: number;
+  id: number;
   date: string;
   total: number;
 }
 
-export default function SaleCard({ product_id, date, total }: Props) {
+export default function SaleCard({ product_id, id, date, total }: Props) {
   const { product, isLoading } = useGetProductById(product_id);
-  const hrefValue = `/sale/${product_id}`;
+  const hrefValue = `/sale/${id}`;
 
   return (
     <>
