@@ -35,3 +35,13 @@ export async function insertSale(sale: SaleWithoutIdType): Promise<{
 
   return { data, error };
 }
+
+export async function updateSale(saleId: number, newSale: SaleWithoutIdType) {
+  const { data, error } = await supabase
+    .from("sales")
+    .update(newSale)
+    .eq("id", saleId)
+    .select();
+
+  return { data, error };
+}
