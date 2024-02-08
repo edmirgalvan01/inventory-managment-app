@@ -26,38 +26,38 @@ export default function EditProductPage() {
       <form className="flex flex-col gap-[20px]" onSubmit={handleSubmit}>
         <FieldInput
           label="Nombre"
-          placeholder={`${newProduct?.newName}`}
+          placeholder={`${newProduct?.name}`}
           disabled={false}
-          onChange={(e) => handleChange("newName", e.target.value)}
+          onChange={(e) => handleChange("name", e.target.value)}
           required
           type="text"
-          value={newProduct.newName}
+          value={newProduct?.name}
         />
         <FieldSelect
           label="Unidad"
           options={LIST_OF_UNITIES}
           disabled={false}
-          onChange={(e) => handleChange("newUnity", e.target.value)}
+          onChange={(e) => handleChange("unity", e.target.value)}
           required
-          value={newProduct.newUnity}
+          value={newProduct?.unity}
         />
         <FieldInput
           label="Cantidad"
-          placeholder={`${newProduct?.newQuantity}`}
+          placeholder={`${newProduct?.quantity}`}
           disabled={false}
-          onChange={(e) => handleChange("newQuantity", e.target.value)}
+          onChange={(e) => handleChange("quantity", e.target.value)}
           required
           type="number"
-          value={newProduct.newQuantity}
+          value={newProduct?.quantity}
         />
         <FieldInput
           label="Precio unitario"
-          placeholder={`$${newProduct?.newPrice}`}
+          placeholder={`$${newProduct?.price}`}
           disabled={false}
-          onChange={(e) => handleChange("newPrice", e.target.value)}
+          onChange={(e) => handleChange("price", e.target.value)}
           required
           type="number"
-          value={newProduct.newPrice}
+          value={newProduct?.price}
           step="0.01"
         />
         <PrimaryButton>Guardar producto</PrimaryButton>
