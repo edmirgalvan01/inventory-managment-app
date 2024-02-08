@@ -4,6 +4,7 @@ import { FieldInput, FieldSelect } from "../components/FieldInput";
 import PageTitle from "../components/PageTitle";
 import { LIST_OF_UNITIES } from "../consts";
 import { useUpdateProduct } from "../hooks/useUpdateProduct";
+import { Toaster } from "sonner";
 
 export default function EditProductPage() {
   const { productId } = useParams();
@@ -62,6 +63,7 @@ export default function EditProductPage() {
         />
         <PrimaryButton>Guardar producto</PrimaryButton>
       </form>
+      <Toaster richColors />
     </section>
   );
 }

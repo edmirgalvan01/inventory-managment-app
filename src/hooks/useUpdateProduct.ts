@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useGetProductById } from "./useGetProductById";
 import { updateProduct } from "../database/products.service";
 import { ProductWithoutIdType } from "../types/products";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export function useUpdateProduct(productId: number) {
+  const navigate = useNavigate();
   const { product } = useGetProductById(productId);
 
   const [newProduct, setNewProduct] = useState<
@@ -39,7 +42,16 @@ export function useUpdateProduct(productId: number) {
       price: newProduct!.price,
     };
 
-    updateProduct(productId, productToSave);
+    updateProduct(productId, productToSave).then((response) => {
+      if (!response.error) {
+        toast.success("Producto actualizado correctamente.");
+        setTimeout(() => {
+          navigate("/inventory");
+        }, 1500);
+      } else {
+        //TODO: Error handler
+      }
+    });
   };
 
   return { newProduct, updateNewProduct, saveNewProduct };
