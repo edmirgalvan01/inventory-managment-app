@@ -34,10 +34,10 @@ export function useUpdateSale(saleId: number) {
 
   const saveNewSale = () => {
     const saleToSave = {
-      product_id: sale!.products.id,
-      quantity: sale!.quantity,
-      total: sale!.total,
-      date: sale!.date,
+      product_id: newSale!.product_id,
+      quantity: newSale!.quantity,
+      total: newSale!.total,
+      date: newSale!.date,
     };
 
     updateSale(saleId, saleToSave).then((response) => {
