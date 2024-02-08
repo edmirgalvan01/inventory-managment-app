@@ -45,3 +45,8 @@ export async function updateSale(saleId: number, newSale: SaleWithoutIdType) {
 
   return { data, error };
 }
+
+export async function deleteSale(saleId: number) {
+  const { error } = await supabase.from("sales").delete().eq("id", saleId);
+  return { error };
+}

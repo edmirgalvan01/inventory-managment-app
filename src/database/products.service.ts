@@ -47,3 +47,12 @@ export async function updateProduct(
 
   return { data, error };
 }
+
+export async function deleteProduct(productId: number) {
+  const { error } = await supabase
+    .from("products")
+    .delete()
+    .eq("id", productId);
+
+  return { error };
+}
