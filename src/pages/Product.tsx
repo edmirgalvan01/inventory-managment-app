@@ -3,12 +3,15 @@ import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import ItemData from "../components/ItemData";
 import PageTitle from "../components/PageTitle";
 import { useGetProductById } from "../hooks/useGetProductById";
+import { useDeleteProduct } from "../hooks/useDeleteProduct";
+import { Toaster } from "sonner";
 
 export default function ProductPage() {
   const { productId } = useParams();
   const fixedId = Number(productId);
 
   const { product, error, isLoading } = useGetProductById(fixedId);
+  const { error: deleteError, removeProduct } = useDeleteProduct();
 
   return (
     <section className="containerPage">
@@ -29,12 +32,20 @@ export default function ProductPage() {
             <PrimaryButton>
               <Link to={`/edit-product/${product.id}`}>Editar</Link>
             </PrimaryButton>
-            <SecondaryButton>Borrar</SecondaryButton>
+            <SecondaryButton onClick={() => removeProduct(product.id)}>
+              Borrar
+            </SecondaryButton>
+            {deleteError && (
+              <span className="text-red-500 font-semibold">
+                {deleteError.message}
+              </span>
+            )}
           </div>
         </>
       ) : (
         <p>{error?.message}</p>
       )}
+      <Toaster richColors />
     </section>
   );
 }
