@@ -3,12 +3,15 @@ import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import ItemData from "../components/ItemData";
 import PageTitle from "../components/PageTitle";
 import { useGetSaleById } from "../hooks/useGetSaleById";
+import { useDeleteSale } from "../hooks/useDeleteSale";
+import { Toaster } from "sonner";
 
 export default function SalePage() {
   const { saleId } = useParams();
   const fixedSale = Number(saleId);
 
   const { sale, isLoading } = useGetSaleById(fixedSale);
+  const { error: deleteError, removeSale } = useDeleteSale();
 
   return (
     <section className="containerPage">
@@ -27,12 +30,20 @@ export default function SalePage() {
             <PrimaryButton>
               <Link to={`/edit-sale/${sale?.id}`}>Editar</Link>
             </PrimaryButton>
-            <SecondaryButton>Borrar</SecondaryButton>
+            <SecondaryButton onClick={() => removeSale(sale!.id)}>
+              Borrar
+            </SecondaryButton>
+            {deleteError && (
+              <p className="text-red-500 font-semibold">
+                {deleteError.message}
+              </p>
+            )}
           </div>
         </>
       ) : (
         <p>Cargando...</p>
       )}
+      <Toaster richColors />
     </section>
   );
 }
