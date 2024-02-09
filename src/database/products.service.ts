@@ -48,7 +48,9 @@ export async function updateProduct(
   return { data, error };
 }
 
-export async function deleteProduct(productId: number) {
+export async function deleteProduct(productId: number): Promise<{
+  error: PostgrestError | null;
+}> {
   const { error } = await supabase
     .from("products")
     .delete()
