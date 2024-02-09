@@ -18,7 +18,7 @@ export function useDeleteProduct() {
         } else {
           toast.success("Producto eliminado correctamente.");
           setTimeout(() => {
-            navigate("/sales");
+            navigate("/inventory");
           }, 1500);
         }
       })
