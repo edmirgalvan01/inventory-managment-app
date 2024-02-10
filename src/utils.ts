@@ -29,10 +29,8 @@ export async function calculateNewStock(
   productId: number,
   quantitySold: number
 ) {
-  // 1. Get the product sold by ID
   const productResponse = await getProductById(productId);
 
-  // 2. If there was an error or the product does not exist, return an error.
   if (productResponse.error || productResponse.products?.length === 0) {
     console.error("calculateNewStock", productResponse.error);
     return {
