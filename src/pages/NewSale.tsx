@@ -20,16 +20,14 @@ export default function NewSalePage() {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    saveSale()
-      .then((response) => {
-        if (!response.error) {
-          toast.success("Producto agregado correctamente.");
-          setTimeout(() => navigate("/sales"), 2000);
-        } else {
-          // TODO: Error message ❌
-        }
-      })
-      .finally(() => {});
+    saveSale().then((response) => {
+      if (!response.error) {
+        toast.success("Producto agregado correctamente.");
+        setTimeout(() => navigate("/sales"), 2000);
+      } else {
+        toast.error(response.error);
+      }
+    });
   };
 
   return (
