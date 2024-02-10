@@ -5,6 +5,8 @@ import {
   SaleWithoutIdType,
 } from "../types/sales";
 import { supabase } from "./supabaseClient";
+import { calculateNewStock, checkIfProductIsAvailable } from "../utils";
+import { updateProductQuantity } from "./products.service";
 
 export async function getSales(): Promise<{
   sales: SaleType[] | null;
@@ -27,13 +29,41 @@ export async function getSaleById(saleId: number): Promise<{
   return { sales, error };
 }
 
-export async function insertSale(sale: SaleWithoutIdType): Promise<{
-  data: SaleType[] | null;
-  error: PostgrestError | null;
-}> {
-  const { data, error } = await supabase.from("sales").insert([sale]).select();
+export async function insertSale(sale: SaleWithoutIdType) {
+  const availableResponse = await checkIfProductIsAvailable(
+    sale.product_id,
+    sale.quantity
+  );
 
-  return { data, error };
+  // Si no esta disponible el producto, retorna un error
+  if (!availableResponse.success) {
+    return { success: false, data: [], error: availableResponse.error };
+  } else {
+    // Calculamos el nuevo stock
+    const stockResponse = await calculateNewStock(
+      sale.product_id,
+      sale.quantity
+    );
+
+    // Actualizamos el stock del producto
+    const updateProductResponse = await updateProductQuantity(
+      sale.product_id,
+      stockResponse.newStock
+    );
+
+    // Si hubo errores en la actualizacion, retornamos un error
+    if (updateProductResponse.error) {
+      return { success: false, data: [], error: updateProductResponse.error };
+    } else {
+      // Insertamos en base de datos la nueva venta
+      const { data, error } = await supabase
+        .from("sales")
+        .insert([sale])
+        .select();
+
+      return { success: false, data, error: error?.message };
+    }
+  }
 }
 
 export async function updateSale(saleId: number, newSale: SaleWithoutIdType) {
