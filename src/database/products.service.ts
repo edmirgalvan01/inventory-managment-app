@@ -48,6 +48,19 @@ export async function updateProduct(
   return { data, error };
 }
 
+export async function updateProductQuantity(
+  productId: number,
+  newQuantity: GLfloat
+) {
+  const { data, error } = await supabase
+    .from("products")
+    .update({ quantity: newQuantity })
+    .eq("id", productId)
+    .select();
+
+  return { data, error };
+}
+
 export async function deleteProduct(productId: number): Promise<{
   error: PostgrestError | null;
 }> {
