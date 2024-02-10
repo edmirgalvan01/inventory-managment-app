@@ -29,7 +29,11 @@ export async function getSaleById(saleId: number): Promise<{
   return { sales, error };
 }
 
-export async function insertSale(sale: SaleWithoutIdType) {
+export async function insertSale(sale: SaleWithoutIdType): Promise<{
+  success: boolean;
+  data: SaleType[] | null;
+  error: string | undefined;
+}> {
   const availableResponse = await checkIfProductIsAvailable(
     sale.product_id,
     sale.quantity
@@ -53,7 +57,11 @@ export async function insertSale(sale: SaleWithoutIdType) {
 
     // Si hubo errores en la actualizacion, retornamos un error
     if (updateProductResponse.error) {
-      return { success: false, data: [], error: updateProductResponse.error };
+      return {
+        success: false,
+        data: [],
+        error: updateProductResponse.error.message,
+      };
     } else {
       // Insertamos en base de datos la nueva venta
       const { data, error } = await supabase
