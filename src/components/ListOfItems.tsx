@@ -5,7 +5,7 @@ import { SecondaryButton } from "./Buttons";
 import ProductCard from "./ProductCard";
 import SaleCard from "./SaleCard";
 import { Link } from "react-router-dom";
-import { TailSpin } from "react-loader-spinner";
+import { LoaderSpinner } from "./LoaderSpinner";
 
 type Props = {
   type: "product" | "sale";
@@ -18,14 +18,7 @@ export default function ListOfItems({ type, list, isLoading, error }: Props) {
   if (isLoading) {
     return (
       <div className="w-full h-[70dvh] flex justify-center items-center">
-        <TailSpin
-          visible={true}
-          height="50"
-          width="50"
-          color="#44576D"
-          ariaLabel="tail-spin-loading"
-          radius="2"
-        />
+        <LoaderSpinner />
       </div>
     );
   }
