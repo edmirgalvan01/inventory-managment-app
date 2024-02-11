@@ -1,15 +1,19 @@
+import { PostgrestError } from "@supabase/supabase-js";
 import { ProductType } from "../types/products";
 import { SaleType } from "../types/sales";
+import { SecondaryButton } from "./Buttons";
 import ProductCard from "./ProductCard";
 import SaleCard from "./SaleCard";
+import { Link } from "react-router-dom";
 
 type Props = {
   type: "product" | "sale";
   list: ProductType[] | SaleType[];
   isLoading: boolean;
+  error: PostgrestError | null;
 };
 
-export default function ListOfItems({ type, list, isLoading }: Props) {
+export default function ListOfItems({ type, list, isLoading, error }: Props) {
   if (isLoading) {
     return <p>Cargando...</p>;
   }
@@ -19,6 +23,18 @@ export default function ListOfItems({ type, list, isLoading }: Props) {
       <h1 className="font-nunito text-medium-blue font-bold text-xl">
         No hay items por mostrar
       </h1>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h2 className="text-error-red font-bold text-lg">{error.code}</h2>
+        <p className="text-error-red font-semibold">{error.message}</p>
+        <SecondaryButton>
+          <Link to="/">Intentalo mas tarde</Link>
+        </SecondaryButton>
+      </div>
     );
   }
 

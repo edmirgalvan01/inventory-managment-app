@@ -14,16 +14,13 @@ export default function SalesPage() {
       <PrimaryButton>
         <Link to="/new-sale">Nueva venta</Link>
       </PrimaryButton>
-      {!isLoading ? (
-        <ListOfItemsWithTitle
-          isLoading={isLoading}
-          title={`Ventas (${totalSales})`}
-          type="sale"
-          list={sales!}
-        />
-      ) : (
-        <p>{error?.message}</p>
-      )}
+      <ListOfItemsWithTitle
+        isLoading={isLoading}
+        title={`Ventas (${totalSales})`}
+        type="sale"
+        list={sales!}
+        error={error}
+      />
     </section>
   );
 }
