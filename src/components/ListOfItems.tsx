@@ -53,7 +53,7 @@ export default function ListOfItems({ type, list, isLoading, error }: Props) {
               key={id}
               id={id}
               name={name}
-              stock={`${quantity} ${unity}`}
+              stock={`${quantity}${unity}`}
               price={price}
             />
           );
