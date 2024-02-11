@@ -4,7 +4,7 @@ import { SaleType } from "../types/sales";
 import ListOfItems from "./ListOfItems";
 
 interface Props {
-  title: string;
+  title: string | undefined;
   type: "product" | "sale";
   list: ProductType[] | SaleType[];
   isLoading: boolean;
