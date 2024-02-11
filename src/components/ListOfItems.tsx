@@ -6,15 +6,21 @@ import SaleCard from "./SaleCard";
 type Props = {
   type: "product" | "sale";
   list: ProductType[] | SaleType[];
+  isLoading: boolean;
 };
 
-export default function ListOfItems({ type, list }: Props) {
-  if (list.length === 0)
+export default function ListOfItems({ type, list, isLoading }: Props) {
+  if (isLoading) {
+    return <p>Cargando...</p>;
+  }
+
+  if (list.length === 0) {
     return (
       <h1 className="font-nunito text-medium-blue font-bold text-xl">
         No hay items por mostrar
       </h1>
     );
+  }
 
   return (
     <ul className="listOfItems flex flex-col gap-[10px]">
