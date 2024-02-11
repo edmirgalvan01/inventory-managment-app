@@ -14,9 +14,7 @@ export default function InventoryPage() {
       <PrimaryButton>
         <Link to="/new-product">Nuevo producto</Link>
       </PrimaryButton>
-      {isLoading ? (
-        <p className="text-medium-blue font-semibold">Cargando...</p>
-      ) : error ? (
+      {error ? (
         <>
           <h2 className="text-error-red font-bold text-lg">{error.code}</h2>
           <p className="text-error-red font-semibold">{error.message}</p>
@@ -26,6 +24,7 @@ export default function InventoryPage() {
         </>
       ) : (
         <ListOfItemsWithTitle
+          isLoading={isLoading}
           title={`Productos (${totalProducts})`}
           type="product"
           list={products!}

@@ -16,14 +16,13 @@ export default function SalesPage() {
       </PrimaryButton>
       {!isLoading ? (
         <ListOfItemsWithTitle
+          isLoading={isLoading}
           title={`Ventas (${totalSales})`}
           type="sale"
           list={sales!}
         />
-      ) : error ? (
-        <p>{error.message}</p>
       ) : (
-        <p>Cargando...</p>
+        <p>{error?.message}</p>
       )}
     </section>
   );
