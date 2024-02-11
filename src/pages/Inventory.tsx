@@ -6,6 +6,7 @@ import { useGetProducts } from "../hooks/useGetProducts";
 
 export default function InventoryPage() {
   const { products, error, isLoading } = useGetProducts();
+  const totalProducts = products?.length;
 
   return (
     <section className="containerPage">
@@ -25,7 +26,7 @@ export default function InventoryPage() {
         </>
       ) : (
         <ListOfItemsWithTitle
-          title="Productos (42)"
+          title={`Productos (${totalProducts})`}
           type="product"
           list={products!}
         />

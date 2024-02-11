@@ -6,6 +6,7 @@ import { useGetSales } from "../hooks/useGetSales";
 
 export default function SalesPage() {
   const { sales, error, isLoading } = useGetSales();
+  const totalSales = sales?.length;
 
   return (
     <section className="containerPage">
@@ -14,7 +15,11 @@ export default function SalesPage() {
         <Link to="/new-sale">Nueva venta</Link>
       </PrimaryButton>
       {!isLoading ? (
-        <ListOfItemsWithTitle title="Ventas (16)" type="sale" list={sales!} />
+        <ListOfItemsWithTitle
+          title={`Ventas (${totalSales})`}
+          type="sale"
+          list={sales!}
+        />
       ) : error ? (
         <p>{error.message}</p>
       ) : (
