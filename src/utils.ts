@@ -1,4 +1,5 @@
 import { getProductById } from "./database/products.service";
+import { SaleType } from "./types/sales";
 
 export async function checkIfProductIsAvailable(
   productId: number,
@@ -52,4 +53,14 @@ export function getMonthName(monthNumber: number) {
   const firstLetterCap = firstLetter.toUpperCase();
   const remainingLetters = dateBase.slice(1);
   return firstLetterCap + remainingLetters;
+}
+
+export function getTotalSales(sales: SaleType[]) {
+  let total: number = 0;
+
+  sales.forEach((sale) => {
+    total += sale.total;
+  });
+
+  return total;
 }

@@ -2,7 +2,7 @@ import { IconCaretDownFilled, IconCaretRightFilled } from "@tabler/icons-react";
 import ListOfItemsWithTitle from "./ListOfItemsWithTitle";
 import { MONTHS_RANGE } from "../consts";
 import { useGetSalesByMonth } from "../hooks/useGetSalesByMonth";
-import { getMonthName } from "../utils";
+import { getMonthName, getTotalSales } from "../utils";
 import { useOpenedGroupToggle } from "../hooks/useOpenedGroupToggle";
 
 export function GroupByMonth({
@@ -40,8 +40,9 @@ export function GroupByMonth({
             list={sales!}
             error={error}
           />
-          <p className="text-end font-semibold font-inter text-medium-blue">
-            Total vendido: <span>$320.23</span>
+          <p className="text-end font-medium font-inter text-medium-blue">
+            Total vendido:{" "}
+            <span className="font-bold">${getTotalSales(sales)}</span>
           </p>
         </div>
       )}
