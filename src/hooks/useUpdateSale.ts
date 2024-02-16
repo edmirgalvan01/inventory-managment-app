@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useGetSaleById } from "./useGetSaleById";
 import { SaleWithoutIdType } from "../types/sales";
 import { updateSale } from "../database/sales.service";
+import { calculateNewStock, checkIfProductIsAvailable } from "../utils";
+import { updateProductQuantity } from "../database/products.service";
 
 export function useUpdateSale(saleId: number) {
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ export function useUpdateSale(saleId: number) {
     } as SaleWithoutIdType);
   };
 
-  const saveNewSale = () => {
+  const saveNewSale = async () => {
     const saleToSave = {
       product_id: newSale!.product_id,
       quantity: newSale!.quantity,
@@ -40,16 +42,49 @@ export function useUpdateSale(saleId: number) {
       date: newSale!.date,
     };
 
-    updateSale(saleId, saleToSave).then((response) => {
-      if (!response.error) {
-        toast.success("Venta actualizada correctamente.");
-        setTimeout(() => {
-          navigate("/sales");
-        }, 1500);
+    // Revisamos si la nueva cantidad esta disponible
+    const stockResponse = await checkIfProductIsAvailable(
+      saleToSave.product_id,
+      saleToSave.quantity
+    );
+
+    // Si no esta disponible, mandamos un mensaje de error
+    if (stockResponse.error) {
+      toast.error(stockResponse.error);
+    } else {
+      // Si esta disponible, actualizamos la venta
+      const saleResponse = await updateSale(saleId, saleToSave);
+
+      // Si hay un error en la actualizacion de la venta
+      if (saleResponse.error) {
+        toast.error(saleResponse.error.message);
       } else {
-        //TODO: Error handler
+        // 1. Calculamos el nuevo stock
+        const newStock = await calculateNewStock(
+          saleToSave.product_id,
+          saleToSave.quantity
+        );
+
+        if (!newStock.error) {
+          // 2. Actualizamos el producto con el nuevo stock
+          const newProduct = await updateProductQuantity(
+            saleToSave.product_id,
+            newStock.newStock
+          );
+
+          if (!newProduct.error) {
+            toast.success("Venta actualizada correctamente.");
+            setTimeout(() => {
+              navigate("/sales");
+            }, 1500);
+          } else {
+            toast.error(newProduct.error.message);
+          }
+        } else {
+          toast.error(newStock.error);
+        }
       }
-    });
+    }
   };
 
   return { newSale, updateNewSale, saveNewSale };
