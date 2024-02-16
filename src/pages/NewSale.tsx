@@ -22,7 +22,7 @@ export default function NewSalePage() {
     e.preventDefault();
     saveSale().then((response) => {
       if (!response.error) {
-        toast.success("Producto agregado correctamente.");
+        toast.success("Venta agregada correctamente.");
         setTimeout(() => navigate("/sales"), 2000);
       } else {
         toast.error(response.error);
