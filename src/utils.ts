@@ -45,3 +45,16 @@ export async function calculateNewStock(
 
   return { success: true, error: "", newStock };
 }
+
+export function getMonthName(monthNumber: number) {
+  const date = new Date();
+  date.setMonth(monthNumber - 1);
+
+  const dateBase = date.toLocaleString("es-ES", { month: "long" });
+
+  const firstLetter = dateBase.charAt(0);
+
+  const firstLetterCap = firstLetter.toUpperCase();
+  const remainingLetters = dateBase.slice(1);
+  return firstLetterCap + remainingLetters;
+}
