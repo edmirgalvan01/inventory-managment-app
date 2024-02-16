@@ -24,7 +24,7 @@ export default function EditSalePage() {
     };
   });
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     saveNewSale();
   };
