@@ -17,6 +17,33 @@ export const LIST_OF_UNITIES = [
   },
 ];
 
+export const LIST_OF_MONTHS = [
+  {
+    number: 1,
+    name: "Enero",
+  },
+  {
+    number: 2,
+    name: "Febrero",
+  },
+  {
+    number: 3,
+    name: "Marzo",
+  },
+  {
+    number: 4,
+    name: "Abril",
+  },
+  {
+    number: 5,
+    name: "Mayo",
+  },
+  {
+    number: 6,
+    name: "Junio",
+  },
+];
+
 export const MONTHS_RANGE = {
   1: {
     from: "2024-01-01",
