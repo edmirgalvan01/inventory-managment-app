@@ -7,6 +7,7 @@ import {
 import { supabase } from "./supabaseClient";
 import { calculateNewStock, checkIfProductIsAvailable } from "../utils";
 import { updateProductQuantity } from "./products.service";
+import { LIST_OF_MONTHS } from "../consts";
 
 export async function getSales(): Promise<{
   sales: SaleType[] | null;
@@ -87,4 +88,27 @@ export async function updateSale(saleId: number, newSale: SaleWithoutIdType) {
 export async function deleteSale(saleId: number) {
   const { error } = await supabase.from("sales").delete().eq("id", saleId);
   return { error };
+}
+
+export async function getSalesByMonth(
+  month: keyof typeof LIST_OF_MONTHS
+): Promise<{
+  data: SaleType[] | null;
+  error: PostgrestError | null;
+}> {
+  const { from, to } = LIST_OF_MONTHS[month];
+
+  const fromDate = new Date(from);
+  const toDate = new Date(to);
+
+  const fromDateFix = fromDate.toISOString();
+  const toDateFix = toDate.toISOString();
+
+  const { data, error } = await supabase
+    .from("sales")
+    .select()
+    .gte("date", fromDateFix)
+    .lte("date", toDateFix);
+
+  return { data, error };
 }
