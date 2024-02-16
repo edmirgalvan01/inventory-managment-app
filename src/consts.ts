@@ -17,7 +17,7 @@ export const LIST_OF_UNITIES = [
   },
 ];
 
-export const LIST_OF_MONTHS = {
+export const MONTHS_RANGE = {
   1: {
     from: "2024-01-01",
     to: "2024-01-31",

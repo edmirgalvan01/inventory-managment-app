@@ -7,7 +7,7 @@ import {
 import { supabase } from "./supabaseClient";
 import { calculateNewStock, checkIfProductIsAvailable } from "../utils";
 import { updateProductQuantity } from "./products.service";
-import { LIST_OF_MONTHS } from "../consts";
+import { MONTHS_RANGE } from "../consts";
 
 export async function getSales(): Promise<{
   sales: SaleType[] | null;
@@ -91,12 +91,12 @@ export async function deleteSale(saleId: number) {
 }
 
 export async function getSalesByMonth(
-  month: keyof typeof LIST_OF_MONTHS
+  month: keyof typeof MONTHS_RANGE
 ): Promise<{
   data: SaleType[] | null;
   error: PostgrestError | null;
 }> {
-  const { from, to } = LIST_OF_MONTHS[month];
+  const { from, to } = MONTHS_RANGE[month];
 
   const fromDate = new Date(from);
   const toDate = new Date(to);
