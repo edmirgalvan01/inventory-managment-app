@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PrimaryButton } from "../components/Buttons";
 import PageTitle from "../components/PageTitle";
 import { GroupByMonth } from "../components/GroupByMonth";
+import { LIST_OF_MONTHS, MONTHS_RANGE } from "../consts";
 
 export default function SalesPage() {
   return (
@@ -10,7 +11,9 @@ export default function SalesPage() {
       <PrimaryButton>
         <Link to="/new-sale">Nueva venta</Link>
       </PrimaryButton>
-      <GroupByMonth monthNumber={1} />
+      {LIST_OF_MONTHS.map((month) => (
+        <GroupByMonth monthNumber={month.number as keyof typeof MONTHS_RANGE} />
+      ))}
     </section>
   );
 }
