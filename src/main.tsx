@@ -12,11 +12,13 @@ import NewSalePage from "./pages/NewSale";
 import ProductPage from "./pages/Product";
 import SalePage from "./pages/Sale";
 import SalesPage from "./pages/Sales";
+import NotFoundPage from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <WelcomePage />,
+    errorElement: <NotFoundPage />,
   },
   {
     path: "/edit-product/:productId",
