@@ -18,6 +18,9 @@ export default {
         inter: ["Inter", "Sans Serif"],
         nunito: ["nunito", "Sans Serif"],
       },
+      boxShadow: {
+        menu: "0 -2px 10px rgba(0, 0, 0, 0.1)",
+      },
     },
   },
   plugins: [],
