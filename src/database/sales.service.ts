@@ -5,7 +5,11 @@ import {
   SaleWithoutIdType,
 } from "../types/sales";
 import { supabase } from "./supabaseClient";
-import { calculateNewStock, checkIfProductIsAvailable } from "../utils";
+import {
+  calculateNewStock,
+  checkIfProductIsAvailable,
+  checkValideDate,
+} from "../utils";
 import { updateProductQuantity } from "./products.service";
 import { MONTHS_RANGE } from "../consts";
 
@@ -35,12 +39,13 @@ export async function insertSale(sale: SaleWithoutIdType): Promise<{
   data: SaleType[] | null;
   error: string | undefined;
 }> {
+  // Revisar si la cantidad insertada esta disponible
   const availableResponse = await checkIfProductIsAvailable(
     sale.product_id,
     sale.quantity
   );
 
-  // Si no esta disponible el producto, retorna un error
+  // Si no esta disponible, retorna un error
   if (!availableResponse.success) {
     return { success: false, data: [], error: availableResponse.error };
   } else {
@@ -49,6 +54,16 @@ export async function insertSale(sale: SaleWithoutIdType): Promise<{
       sale.product_id,
       sale.quantity
     );
+
+    // Revisar si la fecha de la venta no es mayor a hoy
+    const checkDate = checkValideDate(sale.date);
+    if (!checkDate) {
+      return {
+        success: false,
+        data: [],
+        error: "La fecha es mayor al día de hoy",
+      };
+    }
 
     // Actualizamos el stock del producto
     const updateProductResponse = await updateProductQuantity(
