@@ -64,3 +64,10 @@ export function getTotalSales(sales: SaleType[]) {
 
   return total;
 }
+
+export function checkValideDate(dateToCheck: string) {
+  const date = new Date(dateToCheck);
+  const today = new Date();
+
+  return date <= today;
+}
