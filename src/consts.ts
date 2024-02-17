@@ -15,6 +15,10 @@ export const LIST_OF_UNITIES = [
     value: "cms",
     label: "Cms",
   },
+  {
+    value: "pzs",
+    label: "Pzs",
+  },
 ];
 
 export const LIST_OF_MONTHS = [
