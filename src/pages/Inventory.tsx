@@ -12,7 +12,9 @@ export default function InventoryPage() {
     <section className="containerPage">
       <PageTitle title="Inventario" />
       <PrimaryButton>
-        <Link to="/new-product">Nuevo producto</Link>
+        <Link to="/new-product" className="w-full">
+          Nuevo producto
+        </Link>
       </PrimaryButton>
       <ListOfItemsWithTitle
         isLoading={isLoading}

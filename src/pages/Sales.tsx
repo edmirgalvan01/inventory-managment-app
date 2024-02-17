@@ -9,7 +9,9 @@ export default function SalesPage() {
     <section className="containerPage">
       <PageTitle title="Ventas" />
       <PrimaryButton>
-        <Link to="/new-sale">Nueva venta</Link>
+        <Link to="/new-sale" className="w-full">
+          Nueva venta
+        </Link>
       </PrimaryButton>
       {LIST_OF_MONTHS.map((month) => (
         <GroupByMonth monthNumber={month.number as keyof typeof MONTHS_RANGE} />
