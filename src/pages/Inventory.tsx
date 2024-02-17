@@ -3,6 +3,7 @@ import ListOfItemsWithTitle from "../components/ListOfItemsWithTitle";
 import PageTitle from "../components/PageTitle";
 import { Link } from "react-router-dom";
 import { useGetProducts } from "../hooks/useGetProducts";
+import { Navbar } from "../components/Navbar";
 
 export default function InventoryPage() {
   const { products, error, isLoading } = useGetProducts();
@@ -23,6 +24,7 @@ export default function InventoryPage() {
         list={products!}
         error={error}
       />
+      <Navbar />
     </section>
   );
 }
