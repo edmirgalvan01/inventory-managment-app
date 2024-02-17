@@ -1,8 +1,8 @@
 import {
-  IconCoins,
+  IconCash,
   IconHome,
   IconSettings,
-  IconStack3,
+  IconStack2,
 } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,7 @@ export function Navbar() {
         {page === "/" && <div className="h-[3px] w-full bg-medium-blue"></div>}
       </div>
       <div className="flex flex-col gap-1">
-        <IconStack3
+        <IconStack2
           size={28}
           className="text-medium-blue"
           onClick={() => navigate("/inventory")}
@@ -31,7 +31,7 @@ export function Navbar() {
         )}
       </div>
       <div className="flex flex-col gap-1">
-        <IconCoins
+        <IconCash
           size={28}
           className="text-medium-blue"
           onClick={() => navigate("/sales")}
