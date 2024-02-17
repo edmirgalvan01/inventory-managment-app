@@ -13,6 +13,7 @@ import ProductPage from "./pages/Product";
 import SalePage from "./pages/Sale";
 import SalesPage from "./pages/Sales";
 import NotFoundPage from "./pages/NotFound";
+import { SettingsPage } from "./pages/Settings";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/sales",
     element: <SalesPage />,
+  },
+  {
+    path: "/settings",
+    element: <SettingsPage />,
   },
 ]);
 
